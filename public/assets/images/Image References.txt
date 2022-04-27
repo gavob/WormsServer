@@ -1,0 +1,10 @@
+wooden box (box.png) by MSavioti licensed CC0: https://opengameart.org/content/wooden-box-pixel-art-32x32
+grenades (grenade.png) by mtk licensed CC-BY-SA 4.0: https://opengameart.org/content/16x16-grenades
+Iron Axe (IronAxe.png) by ScratchIO licensed CC0: https://opengameart.org/content/iron-axe-with-degradation-progress
+Guns WWII (bomb.png, G43.png, mine.png, tompson.png) by knik1985 licensed CC-BY 3.0: https://opengameart.org/content/guns-wwii
+Rocketlauncher (rlauncher.png) by John2k licensed CC-BY 3.0: https://opengameart.org/content/rocketlauncher
+Missile (missile.png) by samoliver licensed CC0: https://opengameart.org/content/missile-0
+Explosion (explosion.png) by Ben Hickling licensed CC0: https://opengameart.org/content/explosion-7
+Speed Runners (bomber.png) by SCaydi licensed CC-BY 4.0/CC-BY 3.0/GPL 3.0L: https://opengameart.org/content/speed-runners
+Blockhead (playersprites.png) by DatPolyB licensed free for personal or commercial use: https://datpolyb.itch.io/blockhead-rpg-character-sprite
+Large nature background (background.png) by Julien licensed CC-BY-SA 3.0: https://opengameart.org/content/large-nature-background

@@ -1,0 +1,249 @@
+body, div {
+    margin:0px;
+    padding:0px;
+    border:none;
+    color:rgb(0, 0, 0);
+}
+
+body {
+    background-color:#aaa;
+    width:800px;
+    height:500px;
+    border: 1px solid #000;
+    font-family: 'Quantico', sans-serif;
+}
+
+button {
+    font-family: 'Quantico', sans-serif;
+    background-color:#aaa;
+    color:rgb(137, 46, 155);
+}
+
+div {
+    background-color: rgb(188, 185, 189);
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+table {
+    width: 30%;
+    margin: auto;
+}
+
+img {
+    width:90px;
+}
+
+#winimg {
+    display: none;
+}
+
+#loseimg {
+    display: none;
+}
+
+#easelcan {
+    position: absolute;
+    top:0px;
+    left:0px;
+    z-index:0;
+}
+
+#viewport {
+    position: absolute;
+    z-index:1;
+    margin:0;
+    padding:0;
+    width:800px;
+    height:500px;
+    border: none;
+    overflow: hidden;
+}
+
+.screen {
+    height: 500px;
+    width: 800px;
+}
+
+.container {
+    position: relative;
+    text-align: center;
+    margin-top: 15%;
+}
+
+#lobby {
+    display: none;
+}
+
+#game {
+    display: none;
+}
+
+#endgame {
+    display: none;
+    text-align: center;
+}
+
+#waitingroom {
+    display: none;
+    text-align: center;
+}
+
+#gameclock {
+    z-index:2;
+    width: 10%;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 45%;
+    top: 7%;
+    text-align: center;
+}
+
+#turn {
+    z-index:2;
+    width: 30%;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 35%;
+    top: 0;
+    text-align: center;
+}
+
+.nametag {
+    display: none;
+    position: absolute;
+    text-align: center;
+    font-size: 18px;
+    z-index: 2;
+    background-color: rgba(0,0,0,0);
+}
+
+.weaponselection {
+    display: none;
+    position: relative;
+    text-align: center;
+    z-index: 2;
+    background-color: rgb(143, 136, 136);
+    top: 90%;
+    height: 40px;
+    width: 40px;
+    margin: 5px;
+    float: right;
+    bottom: 0;
+    border-radius: 4px;
+}
+
+.weaponselection img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.playeractions {
+    z-index: 2;
+    position: absolute;
+    width: 10%;
+    left: 50%;
+    display: none;
+}
+
+#attackbtn {
+    top: 85%;
+}
+
+#skipbtn {
+    top: 95%;
+}
+
+/* https://stackoverflow.com/questions/41429906/how-to-display-data-label-inside-html5-progress-bar-cross-browser */
+progress {
+    text-align: center;
+    height: 4%;
+    width: 10%;
+    top: 90%;
+    -webkit-appearance: none;
+    border: none;
+    color:rgb(255, 255, 255);
+    
+    /* Set the progressbar to relative */
+    position:absolute;
+}
+
+progress:before {
+    content: attr(data-label);
+    font-size: 0.8em;
+    vertical-align: 0;
+
+    /*Position text over the progress bar */
+    position:absolute;
+    left:0;
+    right:0;
+}
+
+progress::-webkit-progress-bar {
+    background-color: #272727;
+}
+
+progress::-webkit-progress-value {
+    background-color: #b11a1a;
+}
+
+progress::-moz-progress-bar {
+    background-color: #b11a1a;
+}
+
+/************************************/
+
+.healthbar {
+    z-index: 2;
+    display: none;
+    height: 2%;
+    width: 8%;
+    font-size: 0.6em;
+}
+
+#weaponcharge {
+    z-index: 2;
+    display: none;
+    height: 2%;
+    width: 8%;
+}
+
+#currentplayers {
+    z-index: 2;
+    left: 0;
+    top: 0;
+    background-color: rgba(0,0,0,0);
+    font-size: 15px;
+    padding: 3px;
+    margin: 0;
+    display: none;
+}
+
+#currentplayers p {
+    margin: 0;
+}
+
+#currentplayers h3 {
+    margin: 4px;
+}
+
+#help {
+    background-color:rgba(134, 132, 134, 0.9);
+    color:black;
+    z-index: 3;
+    width: 80%;
+    left: 8%;
+    top: 10%;
+    padding: 2%;
+    display:none;
+}
+
+#helpbtn {
+    position: relative;
+    z-index: 2;
+    float: right;
+    margin: 5px;
+}

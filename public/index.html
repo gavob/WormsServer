@@ -1,0 +1,154 @@
+<!doctype html>
+<head>
+    <link rel="stylesheet" type ="text/css" href="css/style.css" />
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.createjs.com/1.0.0/easeljs.min.js"></script>
+    <script src="https://code.createjs.com/1.0.0/preloadjs.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quantico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+    <audio id="aahaudio">
+        <source src="assets/audio/aah.wav" type="audio/mpeg">
+    </audio>
+    <audio id="axeaudio">
+        <source src="assets/audio/axe.wav" type="audio/mpeg">
+    </audio>
+    <audio id="explodeaudio">
+        <source src="assets/audio/explode.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="gunshotaudio">
+        <source src="assets/audio/gunshot.wav" type="audio/mpeg">
+    </audio>
+    <audio id="tommyaudio">
+        <source src="assets/audio/tommy.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="launcheraudio">
+        <source src="assets/audio/launcher.wav" type="audio/mpeg">
+    </audio>
+
+    <div class='screen' id='startscreen'>
+        <div class='container'>
+            <h1>WORMS</h1>
+            <img src='assets/images/logo.png'>
+            <h2>Enter name...</h2>
+            
+            <p><span id='nameerror'></span></p>
+            <input id='username' type='text' /><br/><br/>
+            <button id='createname'>Start</button>
+        </div>
+    </div>
+
+    <div class='screen' id='lobby'>
+        <div class='container'>
+            <h2><span id="playernum"></span>/4 Players</h2>
+
+            <table id="lobbytable">
+                <tr>
+                    <th>Player</th>
+                    <th>Ready</th>
+                </tr>
+                <tr>
+                    <td class='pname'></td>
+                    <td class='pready'></td>
+                </tr>
+                <tr>
+                    <td class='pname'></td>
+                    <td class='pready'></td>
+                </tr>
+                <tr>
+                    <td class='pname'></td>
+                    <td class='pready'></td>
+                </tr>
+                <tr>
+                    <td class='pname'></td>
+                    <td class='pready'></td>
+                </tr>
+            </table>
+
+            <input type="checkbox" id="ready" name="ready">
+            <label for="ready">Ready</label>
+
+            <p><span id="lobbystate">Waiting for players to connect...</span></p>
+        </div>
+    </div>
+
+    <div class='screen' id='game'>
+        <div id='viewport'>
+            <h2 id='turn'>Game Starting...</h2>
+            <h2 id='gameclock'></h2>
+
+            <div id='currentplayers'>
+                <h3>Players:</h3>
+                    <p class='currentplayer'></p>
+                    <p class='currentplayer'></p>
+                    <p class='currentplayer'></p>
+                    <p class='currentplayer'></p>
+            </div>
+
+            <button id='helpbtn'>Help</button>
+
+            <div id='help'>
+                <p>Each player has 30 seconds per turn</p>
+                <p>If the player uses both their stamina and an attack then their turn is ended</p>
+                <p>Players must pick up boxes to get weapons</p>
+                <p>If player has stamina, move with 'A','W','D' or 'Left', 'Up', 'Down' keys</p>
+                <p>If player has collected a weapon, equip it by selecting its button in the HUD</p>
+                <p>Adjust weapon aim by turning using the 'A', 'D' or 'Left', 'Right' keys</p>
+                <p>To fire weapon press 'Space' key</p>
+                <p>If firing a throwable weapon, then hold down 'Space' key to charge throwing power and let go of the 'Space' key to fire</p>
+            </div>
+
+            <div class='nametag'></div>
+            <div class='nametag'></div>
+            <div class='nametag'></div>
+            <div class='nametag'></div>
+
+            <progress class='healthbar' max="100" value="100" data-label="100"></progress>
+            <progress class='healthbar' max="100" value="100" data-label="100"></progress>
+            <progress class='healthbar' max="100" value="100" data-label="100"></progress>
+            <progress class='healthbar' max="100" value="100" data-label="100"></progress>
+
+            <progress id='weaponcharge' max="100" value="0"></progress>
+            
+            <progress class='playeractions' id='stamina' max="100" value="100" data-label="Stamina"></progress>
+            <button class='playeractions' id='skipbtn'>Skip turn</button>
+
+            <div id='rifle' class='weaponselection'><img src='./assets/images/rifle_edit.png'></div>
+            <div id='tommy' class='weaponselection'><img src='./assets/images/tommy_edit.png'></div>
+            <div id='grnde' class='weaponselection'><img src='./assets/images/grenade_edit.png'></div>
+            <div id='axe' class='weaponselection'><img src='./assets/images/axe_edit.png'></div>
+            <div id='lnchr' class='weaponselection'><img src='./assets/images/launcher_edit.png'></div>
+
+            <canvas id="easelcan" width="1600" height="1000"></canvas>
+        </div>
+    </div>
+
+    <div class='screen' id='endgame'>
+        <h2 id='endresult'></h2>
+        <img id='winimg' src='assets/images/win.png'>
+        <img id='loseimg' src='assets/images/lose.png'>
+        <p class='endplace'></p>
+        <p class='endplace'></p>
+        <p class='endplace'></p>
+    </div>
+
+    <div class='screen' id='waitingroom'>
+        <h2>Waiting room</h2>
+        <p>Game currently in progress, you can join the next game once it ends</p>
+    </div>
+
+    <h1>Test B2D Server with Easel <span id='datarate'></span> <span id='fps'></span></h1>
+    
+</body>
+
+<script src="./js/main.js"></script>
+<script src="./js/uilisteners.js"></script>
+<script src="./js/serverlisteners.js"></script>
+<script src="./js/viewport.js"></script>
+
+</html>
